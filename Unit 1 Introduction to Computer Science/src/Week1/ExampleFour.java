@@ -17,7 +17,7 @@ public class ExampleFour {
         int average = (markOne+markTwo+ markThree)/3;
 
         System.out.println(average);
-        System.out.println("The average is:" + average); // stromg concatanation - joined the string with something else
+        System.out.println("The average is:" + average); // strong concatanation - joined the string with something else
 
     
 

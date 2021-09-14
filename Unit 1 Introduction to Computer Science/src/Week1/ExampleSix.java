@@ -35,7 +35,7 @@ public class ExampleSix {
     --a;
 
     int b = 3;
-    int e = 3
+    int e = 3;
 
     int c = 2* b++;
     int d = 2* ++e;
