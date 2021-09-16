@@ -9,9 +9,10 @@ package week2;
 public class HW2 {
     public static void main(String[] args) {
         int test = 80;
-        int mark = 75;
+        int mark = 80;
 
-        double percent = (double) mark / test ;
+        int percent1 = mark / test;
+        int percent = percent1 * 100;  
     
 
         System.out.println("If the test is out of " + test +(", and the student got "+ mark));
