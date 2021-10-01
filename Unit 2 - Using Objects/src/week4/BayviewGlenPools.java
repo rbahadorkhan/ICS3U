@@ -14,6 +14,10 @@ public class BayviewGlenPools {
         double surfaceArea = geSurfaceArea(length, width, shallowHeight, shallowLength, transition, deepHeight);
         double volume = getVolume (length, width, shallowHeight, shallowLength, transition, deepHeight);
 
+        System.out.println("Volume: " + (int)(volume* 0.9 * 100) / 100.0 );
+        System.out.println("Surface Area: " + (int)(surfaceArea * 100) / 100.0);
+        System.out.println("$"+ (int)((surfaceArea*linerCost)* 100) / 100.00) ;
+
         
 
        
@@ -22,7 +26,7 @@ public class BayviewGlenPools {
     private static double geSurfaceArea(int length, int width, int shallowHeight, int shallowLength, int transition,
             int deepHeight) {
                 
-                double transitionBase = Math.sqrt(Math.pow(tranition,2)- Math.pow(deepHeight- shallowHeight, 2));
+                double transitionBase = Math.sqrt(Math.pow(transition,2)- Math.pow(deepHeight- shallowHeight, 2));
                 double deepLength = length - shallowLength -transitionBase;
 
                 int shallowBack = shallowHeight * width;
