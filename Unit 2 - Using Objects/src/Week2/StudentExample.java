@@ -31,6 +31,9 @@ public class StudentExample {
         yola.displayAverage();
 
         Student harrison = new Student("Harrison","547235");
+        
+        double yolaAverage = yola.getAverage();
+        System.out.println(yola.getName() + " has an average of " + yolaAverage);
 
         
 

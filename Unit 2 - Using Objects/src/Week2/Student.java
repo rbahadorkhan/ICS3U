@@ -43,9 +43,15 @@ public class Student {
   public void displayName() {
     System.out.println(name);
   }
+
   /**
-   * String
+   * String is the return type (non-void method)
+   *  @return name
    */
+
+  public String getName() {
+    return name;
+  }
 
   /**
    *  A void method performs a task and returns NOTHING non-static means that each
@@ -72,6 +78,10 @@ public class Student {
   // naming convention for variables and methods are the same (camelCase)
   public void displayAverage() {
     System.out.println(average);
+  }
+  
+  public double getAverage() {
+    return average;
   }
 
   public void addTest(int mark) {

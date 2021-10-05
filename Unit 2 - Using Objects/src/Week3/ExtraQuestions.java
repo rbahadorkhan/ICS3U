@@ -5,27 +5,30 @@ public class ExtraQuestions {
         questionOne();
         questionTwo();
         String str = question5("This is a sentence.");
-        System.out.println(string);
+        System.out.println(str);
 
         str = question6("This is a sentence.", "ent");
 
-        double slope = question8(1,2,3,4); // (1,2) and (4,5)
+        double slope = question8(1, 2, 4, 5); // (1,2) and (4,5)
 
         System.out.println(question10("This is a sentence."));
+    }
 
-    
-
-
-
-
+    private static String question10(String string) {
+        int index = (int) (Math.random() * string.length() + 0);
+         String first = string.substring(0, index);
+         String last = string.substring(index + 1);
+         return first + last;
+    }
 
     
 
 
     private static String question6(String str, String substr) {
         int index = str.indexOf (substr);
-        String first = str.substring(index +str.length)
-        return null;
+        String first = str.substring(index +str.length());
+        String last = str.substring(index + str.length());
+        return  first + last;
     }
 
     private static String question5(String string) {
@@ -34,17 +37,15 @@ public class ExtraQuestions {
         String last = string.substring(index +1);
         return first+ last;
 
-        return null;
     }
 
     private static double question8(int x1, int y1, int x2, int y2) {
         //slope = (deltaY / deltaX)
 
-        int deltaY = y2 -y1; 
+        int deltaY = y2 - y1;
         int deltaX = x2 - x1;
-
-        return double slope = (double) deltaY /deltaX; 
-        
+  
+        return (double) deltaY / deltaX;
     }
 
     /**

@@ -1,7 +1,7 @@
 package Week5;
 
     import java.util.Scanner;
-
+    
     public class CrossCountry {
        public static void main(String[] args) {
           Scanner in = new Scanner(System.in);
@@ -46,3 +46,4 @@ package Week5;
        private static double convertToSeconds(String endTime) {
           return 0;
     }
+    
