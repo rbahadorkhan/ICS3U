@@ -1,4 +1,4 @@
-package week2;
+package Week2;
 
 /**
  * A class is a blue print for something that we can model and create variables

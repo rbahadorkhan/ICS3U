@@ -13,9 +13,7 @@ public class ExtraQuestions {
 
         System.out.println(question10("This is a sentence."));
 
-    private static String () {
-        
-    }
+    
 
 
 

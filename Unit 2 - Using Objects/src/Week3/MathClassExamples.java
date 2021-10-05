@@ -16,10 +16,10 @@ public class MathClassExamples {
 
         int y1 = 3;
         int y2 = 4;
-        int y2 = 5;
+        int x1 = 5;
         int x2 = 8;
 
-        double lengthofLineSegment = Math.sqrt(Math.pow((x2 - x1), 2)+ Math.pow((y2 - y1), 2);
+        double lengthofLineSegment = Math.sqrt(Math.pow((x2 - x1), 2)+ Math.pow((y2 - y1), 2));
 
         
 

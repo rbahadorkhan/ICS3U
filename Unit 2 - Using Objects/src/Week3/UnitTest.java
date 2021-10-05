@@ -22,7 +22,10 @@ public class UnitTest {
 
 
     
-       /**
+      
+
+
+         /**
         * removeChars("Happy", 1, 2) -> "Hpy"
         * removeChars("Computer Science", 0, 3) -> "puter Science"
         * removeChars("Computer Science", 3, 4) -> "Comr Science"
@@ -31,15 +34,13 @@ public class UnitTest {
     public static String removeChars (String str, int index, int n) {
         String front = str.substring(0, index);
         String last = str.substring(index+n);
-
+        
         return front + last; 
 
-    public static sqrtSum() {
-        int n1 = number / 1000; // ex
-        
 
-        }
         } 
+     public static sqrtSum() {
+          int n1 = number / 1000; // ex
 
     }
 

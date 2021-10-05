@@ -1,6 +1,6 @@
 package Week2;
 
-import week2.Student;
+import Week2.Student;
 
 public class StudentExample {
     public static void main(String[] args) {

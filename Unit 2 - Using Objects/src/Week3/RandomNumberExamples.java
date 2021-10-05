@@ -18,7 +18,7 @@ public class RandomNumberExamples {
         int index = (int) (Math.random() * str.length());
 
         str = str.substring(0, index) + "x" + str.substring(index +1);
-        System.out.println(x);
+        System.out.println(str);
 
 
 
