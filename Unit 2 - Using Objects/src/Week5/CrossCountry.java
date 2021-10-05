@@ -2,7 +2,7 @@ package Week5;
 
     import java.util.Scanner;
 
-    public class CrossCouuntry {
+    public class CrossCountry {
        public static void main(String[] args) {
           Scanner in = new Scanner(System.in);
           processRunner(in);
