@@ -1,16 +1,9 @@
-/**
- * Romina Bahadorkhan
- * Mr.DesLauriers
- * ICS3U-A
- * October 6th, 2021
- */
-
 package Week5;
 
     import java.util.Scanner;
     
     public class CrossCountry {
-       public static void main(String[] args) {
+      public static void main(String[] args) {
           Scanner in = new Scanner(System.in);
           processRunner(in);
           processRunner(in);
