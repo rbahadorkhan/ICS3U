@@ -38,8 +38,8 @@ package Week5;
            System.out.println("Enter Your Time Finished (mm:ss.sss): ");
            finishTime = in.nextLine(); 
     
-          splitTwo = subtractTimes(mileTwo, mileOne);
-          splitThree = subtractTimes(finishTime, mileTwo);
+          splitTwo = subtractTime(mileTwo, mileOne);
+          splitThree = subtractTime(finishTime, mileTwo);
     
           /**
            * Display a summary for the runner
@@ -76,23 +76,23 @@ package Week5;
         }
         /**
          * 
-         * @param totalSeconds
+         * @param endTime
          * @return the part of  the time where it is in seconds
          */
 
-        public static double getSeconds(double totalSeconds) {
-           double seconds = (totalSeconds % 60);
+        public static double getSeconds(double endtime) {
+           double seconds = (endtime % 60);
            return seconds;
         }
 
         /**
          * 
-         * @param totalMinutes
+         * @param startTime
          * @return the part of the time where it is in minutes
          */
 
-        public static int getMinutes(double totalMinutes) {
-           int minutes = (int)(totalMinutes/60);
+        public static int getMinutes(double startTime) {
+           int minutes = (int)(startTime/60);
            return minutes;
         }
 
