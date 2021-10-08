@@ -2,54 +2,54 @@ package Week5;
 
     import java.util.Scanner;
     
-    public class CrossCountry {
+   public class CrossCountry {
       public static void main(String[] args) {
-          Scanner in = new Scanner(System.in);
-          processRunner(in);
-          processRunner(in);
-          processRunner(in);
-          in.close();
+         Scanner in = new Scanner(System.in);
+         processRunner(in);
+         processRunner(in);
+         processRunner(in);
+         in.close();
          
-       }
+      }
 
-       /**
-        *
-        * @param in
-        */
+      /**
+      *
+      * @param in
+      */
     
-       private static void processRunner(Scanner in) {
-          String firstName, lastName;
-          String mileOne, mileTwo, finishTime;
-          String splitTwo, splitThree;
+      private static void processRunner(Scanner in) {
+         String firstName, lastName;
+         String mileOne, mileTwo, finishTime;
+         String splitTwo, splitThree;
     
-          /**
-           * get both the first name and last name from the user
-           * get the name and mleOne, mileTwo, finishTime from the user
-           */
+      /**
+      * get both the first name and last name from the user
+      * get the name and mleOne, mileTwo, finishTime from the user
+      */
 
-           System.out.println("Enter Your First Name: ");
-           firstName = in.nextLine();
-           System.out.println("Enter Your Last Name: ");
-           lastName = in.nextLine();
-           System.out.println("Enter Your First Mile (mm:ss.sss): ");
-           mileOne = in.nextLine();
-           System.out.println("Enter Your Second Mile (mm:ss.sss): ");
-           mileTwo = in.nextLine(); 
-           System.out.println("Enter Your Time Finished (mm:ss.sss): ");
-           finishTime = in.nextLine(); 
+         System.out.println("Enter Your First Name: ");
+         firstName = in.nextLine();
+         System.out.println("Enter Your Last Name: ");
+         lastName = in.nextLine();
+         System.out.println("Enter Your First Mile (mm:ss.sss): ");
+         mileOne = in.nextLine();
+         System.out.println("Enter Your Second Mile (mm:ss.sss): ");
+         mileTwo = in.nextLine(); 
+         System.out.println("Enter Your Time Finished (mm:ss.sss): ");
+         finishTime = in.nextLine(); 
     
-          splitTwo = subtractTime(mileTwo, mileOne);
-          splitThree = subtractTime(finishTime, mileTwo);
+         splitTwo = subtractTime(mileTwo, mileOne);
+         splitThree = subtractTime(finishTime, mileTwo);
     
-          /**
-           * Display a summary for the runner
-           */
+         /**
+         * Display a summary for the runner
+         */
           
-          System.out.println(firstName + " " + lastName);
-          System.out.println("Split One: " + mileOne);
-          System.out.println("Split Two: " + splitTwo);
-          System.out.println("Split Three: " + splitThree);
-        }
+         System.out.println(firstName + " " + lastName);
+         System.out.println("Split One: " + mileOne);
+         System.out.println("Split Two: " + splitTwo);
+         System.out.println("Split Three: " + splitThree);
+      }
 
         /**
         * 
@@ -58,54 +58,55 @@ package Week5;
         * @return the time
         */
        
-       private static String subtractTime(String endTime, String startTime) {
-          double endInSeconds = convertToSeconds (endTime); 
-           double startInSeconds = convertToSeconds (startTime); 
-           double diffInSeconds = endInSeconds - startInSeconds; 
-           return convertToTime(diffInSeconds); 
-        }
+      private static String subtractTime(String endTime, String startTime) {
+         double endInSeconds = convertToSeconds (endTime); 
+         double startInSeconds = convertToSeconds (startTime); 
+         double diffInSeconds = endInSeconds - startInSeconds; 
+         return convertToTime(diffInSeconds); 
+      }
 
-        /**
-         * 
-         * @param diffInSeconds
-         * @return the time in proper format
-         */
+      /**
+      * 
+      * @param diffInSeconds
+      * @return the time in proper format
+      */
 
-        private static String convertToTime(double diffInSeconds) {
-           return String.format("%d:%06.3f", getMinutes(diffInSeconds), getSeconds(diffInSeconds));
-        }
-        /**
-         * 
-         * @param endTime
-         * @return the part of  the time where it is in seconds
-         */
+      private static String convertToTime(double diffInSeconds) {
+         return String.format("%d:%06.3f", getMinutes(diffInSeconds), getSeconds(diffInSeconds));
+      }
 
-        public static double getSeconds(double endtime) {
-           double seconds = (endtime % 60);
-           return seconds;
-        }
+      /**
+      * 
+      * @param endTime
+      * @return the part of  the time where it is in seconds
+      */
 
-        /**
-         * 
-         * @param startTime
-         * @return the part of the time where it is in minutes
-         */
+      public static double getSeconds(double endtime) {
+         double seconds = (endtime % 60);
+         return seconds;
+      }
 
-        public static int getMinutes(double startTime) {
-           int minutes = (int)(startTime/60);
-           return minutes;
-        }
+      /**
+      * 
+      * @param startTime
+      * @return the part of the time where it is in minutes
+      */
 
-        /**
-         * 
-         * @param time
-         * @return the whole time (both minutes and seconds)
-         */
+      public static int getMinutes(double startTime) {
+         int minutes = (int)(startTime/60);
+         return minutes;
+      }
 
-        private static double convertToSeconds(String time) {
-            int getColon = time.indexOf(":");
-            double minute = Double.valueOf(time.substring(0 , getColon));
-            double second = Double.valueOf(time.substring(0 , getColon));
-            return (minute * 60) + second;
-        }
+      /**
+      * 
+      * @param time
+      * @return the whole time (both minutes and seconds)
+      */
+
+      private static double convertToSeconds(String time) {
+         int getColon = time.indexOf(":");
+         double minute = Double.valueOf(time.substring(0 , getColon));
+         double second = Double.valueOf(time.substring(0 , getColon));
+         return (minute * 60) + second;
+   }
 }
