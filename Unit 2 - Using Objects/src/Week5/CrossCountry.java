@@ -92,7 +92,7 @@ package Week5;
          */
 
         public static int getMinutes(double totalMinutes) {
-           int minutes = (int)(totalSeconds/60);
+           int minutes = (int)(totalMinutes/60);
            return minutes;
         }
 
