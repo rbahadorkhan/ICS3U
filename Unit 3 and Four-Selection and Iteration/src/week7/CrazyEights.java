@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class CrazyEights {
     private static final int NUM_SUITS = 4;
     private static final String HEARTS = "H";
@@ -44,8 +47,71 @@ public class CrazyEights {
         c1Points += Integer.parseInt(result.substring(firstDash + 1, secondDash));
         c2Points += Integer.parseInt(result.substring(secondDash + 1));
         System.out.println("Current Score: " + p1Points + " " + c1Points + " " + c2Points);
-    }
+      }
+      Scanner input = new Scanner(System.in);
+      String suits[] = {"J", "Q", "K", "A"};
+      String cards[] = {"2", "3", "4", "5", "6", "7", "8", "9", "10"};
+      Random random = new Random();
+      String topCard = (cards[random.nextInt(cards.length)] + suits[random.nextInt(suits.length)]);
+      System.out.println("Top Card: " + topCard);
   }
+
+  private static 
+
+    while(!validInput){
+      if(checkFace(playerHand, topCard) == true || checksuit(p1ayerHand, topCard) == true )
+      System.out.println("Enter card you would like to play: ");
+      String card = in.nextLine().toUpperCase();
+      if (playerHand.indexOf(card) < 0) { 
+        System.out.println("Invalid Card");
+        System.out.println("The top card is: " + topCard);
+      } else if(card.equals("8H") || card.equals("8C") || card.equals("8D") || card.equals("8S")){
+        System.out.println("Enter new suit(Hearts, Diamonds, Spades or Clubs: ");
+        String newSuit = in.nextLine().toUpperCase();
+        if(newSuit.equals("HEARTS") == false || newSuit.equals("CLUBS") == false || newSuit.equals("SPADES") == false || newSuit.equals("DIAMONDS") == false) {
+          System.out.println("Invalid Input");
+          System.out.println("Enter new suit(Hearts, Diamonds, Spades or Clubs: ");
+        }else{
+          if(newSuit.equals("HEARTS")){
+            topCard = "8";
+            playerHand = playerHand.substring(0, playerHand.indexOf(card)) + playerHand.substring(playerHand.indexOf(card) + card.length());
+             validInput = true;
+             System.out.println("Your new suit is: " + newSuit);
+             
+          }else if (newSuit.equals("CLUBS")){
+            topCard = "8C";
+            playerHand = playerHand.substring(0, playerHand.indexOf(card)) + playerHand.substring(playerHand.indexOf(card) + card.length());
+            validInput = true;
+            System.out.printlnt("Your new suit is: " + newSuit);
+
+         }  else if (newSuit.equals("DIAMONDS")){
+            topCard = "8D";
+            validInput = true;
+            System.out.printlnt("Your new suit is: " + newSuit);
+         } else {
+            topCard = "8S";
+            playerHand = playerHand.substring(0, playerHand.indexOf(card)) + playerHand.substring(playerHand.indexOf(card) + card.length());
+            validInput = true;
+            System.out.println("Your new suit is: " + newSuit);
+
+          }
+
+         }
+
+      }
+
+  
+        }
+
+
+
+      }
+
+
+
+ 
+
+    }
 
     private static String getCard(String usedCards) {
       String card = getFace() + getSuit();
