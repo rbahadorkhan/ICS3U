@@ -38,5 +38,20 @@ public class Die{
         return topSide;
     }
 
+    public boolean equals(Object obj){
+        if(obj ==this)
+        return true;
+        if(obj instanceof Die){
+            return this.topSide == ((Die)obj).topSide;
+        }else{
+            return false;
+        }
+
+    }
+    public String toString(){
+        return ""+ topSide;
+    }
+
+
 
 }

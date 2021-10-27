@@ -9,7 +9,7 @@ public class DieGame {
         for(int i= 0; i <100; i++){
             die1.roll();
             die2.roll();
-            if( die1.getTopSide()==die2.getTopSide()){
+            if( die1.equals(die2)){
                 count++;
             }
             
@@ -17,7 +17,6 @@ public class DieGame {
         } 
         System.out.println("Pairs: "+ count);
 
-        
     }
     
 }
