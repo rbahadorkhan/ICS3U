@@ -14,6 +14,35 @@ public class CrazyEights {
     private static final String KING = "K";
 
     public static void main(String[] args) {
+
+      String playerHand = "";
+      playerHand = getCard(playerHand) + " ";
+      playerHand += getCard(playerHand) + " ";
+      playerHand += getCard(playerHand) + " ";
+      playerHand += getCard(playerHand) + " ";
+      playerHand += getCard(playerHand) + " ";
+      System.out.println(playerHand);
+
+      String compOneHand = "";
+        compOneHand = getCard(compOneHand) + " ";
+        compOneHand+= getCard(compOneHand) + " ";
+        compOneHand += getCard(compOneHand) + " ";
+        compOneHand += getCard(compOneHand) + " ";
+        compOneHand += getCard(compOneHand) + " ";
+        System.out.println(compOneHand);
+    
+      String compTwoHand = "";
+        compTwoHand = getCard(compTwoHand) + " ";
+        compTwoHand+= getCard(compTwoHand) + " ";
+        compTwoHand += getCard(compTwoHand) + " ";
+        compTwoHand += getCard(compTwoHand) + " ";
+        compTwoHand += getCard(compTwoHand) + " ";
+        System.out.println(compTwoHand);
+    
+      String topCard = "";
+      topCard = getCard() + "";
+      System.out.println("The top card is: " + topCard);
+
       int p1Points = 0, c1Points = 0, c2Points = 0;
       while (!gameOver(p1Points, c1Points, c2Points)) {
         String result = playRound();
@@ -31,74 +60,10 @@ public class CrazyEights {
       String topCard = (cards[random.nextInt(cards.length)] + suits[random.nextInt(suits.length)]);
       System.out.println("Top Card: " + topCard);
   }
-  private static void playerHand(){
-    String playerHand = "";
-    playerHand = getCard(playerHand) + " ";
-    playerHand += getCard(playerHand) + " ";
-    playerHand += getCard(playerHand) + " ";
-    playerHand += getCard(playerHand) + " ";
-    playerHand += getCard(playerHand) + " ";
-    
-    System.out.println(playerHand);
 
-  }
-  private static void compOneHand(){
-    String compOneHand = "";
-      compOneHand = getCard(compOneHand) + " ";
-      compOneHand+= getCard(compOneHand) + " ";
-      compOneHand += getCard(compOneHand) + " ";
-      compOneHand += getCard(compOneHand) + " ";
-      compOneHand += getCard(compOneHand) + " ";
-      System.out.println(compOneHand);
-  }
+   
 
-  private static void compTwoHand(){
-    String compTwoHand = "";
-      compTwoHand = getCard(compTwoHand) + " ";
-      compTwoHand+= getCard(compTwoHand) + " ";
-      compTwoHand += getCard(compTwoHand) + " ";
-      compTwoHand += getCard(compTwoHand) + " ";
-      compTwoHand += getCard(compTwoHand) + " ";
-      System.out.println(compTwoHand);
-  }
 
-    //while(!validInput){
-      //if(checkFace(playerHand, topCard) == true || checksuit(p1ayerHand, topCard) == true )
-      //System.out.println("Enter card you would like to play: ");
-      //String card = in.nextLine().toUpperCase();
-     // if (playerHand.indexOf(card) < 0) { 
-        //System.out.println("Invalid Card");
-        //System.out.println("The top card is: " + topCard);
-       //else if(card.equals("8H") || card.equals("8C") || card.equals("8D") || card.equals("8S")){
-        //System.out.println("Enter new suit(Hearts, Diamonds, Spades or Clubs: ");
-        //String newSuit = in.nextLine().toUpperCase();
-        //if(newSuit.equals("HEARTS") == false || newSuit.equals("CLUBS") == false || newSuit.equals("SPADES") == false || newSuit.equals("DIAMONDS") == false) {
-          //System.out.println("Invalid Input");
-          //System.out.println("Enter new suit(Hearts, Diamonds, Spades or Clubs: ");
-        //}else{
-          //if(newSuit.equals("HEARTS")){
-            //topCard = "8";
-            //playerHand = playerHand.substring(0, playerHand.indexOf(card)) + playerHand.substring(playerHand.indexOf(card) + card.length());
-             //validInput = true;
-             //System.out.println("Your new suit is: " + newSuit);
-             
-          //}else if (newSuit.equals("CLUBS")){
-            //topCard = "8C";
-            //playerHand = playerHand.substring(0, playerHand().indexOf(card)) + playerHand().substring(playerHand.indexOf(card) + card.length());
-            //validInput = true;
-            //System.out.printlnt("Your new suit is: " + newSuit);
-
-         //}  else if (newSuit.equals("DIAMONDS")){
-            //topCard = "8D";
-            //validInput = true;
-            //System.out.printlnt("Your new suit is: " + newSuit);
-         //} else {
-            //topCard = "8S";
-            //playerHand = playerHand.substring(0, playerHand.indexOf(card)) + playerHand.substring(playerHand.indexOf(card) + card.length());
-            //validInput = true;
-            //System.out.println("Your new suit is: " + newSuit);
-
-          
 
 
     private static String getCard(String usedCards) {
