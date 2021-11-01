@@ -271,9 +271,7 @@ public class CrazyEights {
          }
             return "8" + topSuit + "|" + compHand;
       }
-      
-
-     return topCard + "|" + compHand; 
+      return topCard + "|" + compHand; 
 
    }
   }
