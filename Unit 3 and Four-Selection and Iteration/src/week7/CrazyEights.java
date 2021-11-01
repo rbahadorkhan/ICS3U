@@ -68,6 +68,57 @@ public class CrazyEights {
         return playerPoints >= 100 || compOneHand >= 100 || compTwoHand >= 100;
       }
 
+    
+ 
+     private static String getPoints(String hand){
+        int points = 0;
+        String str = "";
+        while(hand.length() > 0){
+           if(hand.indexOf("A") >= 0){
+              points += 1;
+              hand = hand.substring(0, hand.indexOf("A")) +  hand.substring(hand.indexOf("A") + 3);
+           }if(hand.indexOf("2") >= 0){
+              points += 2;
+              hand = hand.substring(0, hand.indexOf("2")) +  hand.substring(hand.indexOf("2") + 3);
+           }if(hand.indexOf("3") >= 0){
+              points += 3;
+              hand = hand.substring(0, hand.indexOf("3")) +  hand.substring(hand.indexOf("3") + 3);
+           }if(hand.indexOf("4") >= 0){
+              points += 4;
+              hand = hand.substring(0, hand.indexOf("4")) +  hand.substring(hand.indexOf("4") + 3);
+           }if(hand.indexOf("5") >= 0){
+              points += 5;
+              hand = hand.substring(0, hand.indexOf("5")) +  hand.substring(hand.indexOf("5") + 3);
+           }if(hand.indexOf("6") >= 0){
+              points += 6;
+              hand = hand.substring(0, hand.indexOf("6")) +  hand.substring(hand.indexOf("6") + 3);
+           }if(hand.indexOf("7") >= 0){
+              points += 7;
+              hand = hand.substring(0, hand.indexOf("7")) +  hand.substring(hand.indexOf("7") + 3);
+           }if(hand.indexOf("8") >= 0){
+              points += 8;
+              hand = hand.substring(0, hand.indexOf("8")) +  hand.substring(hand.indexOf("8") + 3);
+           }if(hand.indexOf("9") >= 0){
+              points += 9;
+              hand = hand.substring(0, hand.indexOf("9")) +  hand.substring(hand.indexOf("9") + 3);
+           }if(hand.indexOf("10") >= 0){
+              points += 10;
+              hand = hand.substring(0, hand.indexOf("10")) +  hand.substring(hand.indexOf("10") + 4);
+           }if(hand.indexOf("J") >= 0){
+              points += 10;
+              hand = hand.substring(0, hand.indexOf("J")) +  hand.substring(hand.indexOf("J") + 3);
+           }if(hand.indexOf("Q") >= 0){
+              points += 10;
+              hand = hand.substring(0, hand.indexOf("Q")) +  hand.substring(hand.indexOf("Q") + 3);
+           }if(hand.indexOf("K") >= 0){
+              points += 10;
+              hand = hand.substring(0, hand.indexOf("K")) +  hand.substring(hand.indexOf("K") + 3);
+           }
+        }
+        return str + points;
+    }
+  
+
 
 
       // Allows the players to play a round
@@ -126,56 +177,107 @@ public class CrazyEights {
       
 
      // How the computer plays 
-    private static String processComputer(String compHand, String compOneHand, String compTwoHand, String topCard){
-        compHand = validHand(compHand, topCard) + " "; 
-        int index = 0; 
-        String card = "";  
-        if (compHand.indexOf(topCard.substring(0, topCard.length() - 1)) != -1 || compHand.indexOf("8") != -1) {
-          if (compOneHand.indexOf(" ") == -1 || compTwoHand.indexOf(" ") == -1){
-            while (compHand.indexOf(topCard.substring(0, topCard.length() - 1), index)!= -1){
-            index = compHand.indexOf(topCard.substring(0, topCard.length() - 1), index); 
-            card = compHand.substring(compHand.lastIndexOf(" ", index) + 1, compHand.indexOf(" ", index));
-            if (!(card.substring(card.length() - 1).equals(topCard.substring(topCard.length() - 1)))){
-              return compHand.replaceFirst(card + " ", "").trim() + "-" + card;
-            }
-            index++;
-            if (compHand.indexOf("8") > - 1){
-            //sees if its 8
-            return compHand.replaceFirst(compHand.substring(compHand.indexOf("8"), compHand.indexOf("8") + 2), "").trim() + "-8";
-          
-             if (compHand.indexOf(topCard.substring(topCard.length() - 1)) > -1)
-                return compHand.replaceFirst(card + " ", "").trim() + "-" + card;
-            }
-            index++;
-            if (card.indexOf(topCard.substring(0, topCard.length() -1), 0 > -1))
-            index = 0;
-            while (compHand.indexOf(topCard.substring(topCard.length() - 1), index) != -1){
-              index = compHand.indexOf(topCard.substring(topCard.length() -1), index); 
-              card = compHand.substring(compHand.lastIndexOf(" ", index) + 1, compHand.indexOf(" ", index));
-              if (card.indexOf("8") == -1){
-                return compHand.replaceFirst(card + " ", "").trim() + "-" + card;
-              } else {
-                index++;
-            } if (compHand.indexOf(topCard.substring(0, topCard.length() - 1)) != -1 && compHand.indexOf("8") == -1 ){
-              index = 0; 
-              index = compHand.indexOf(topCard.substring(0, topCard.length() - 1), index); 
-              card = compHand.substring(index, compHand.indexOf(" ", index)); 
-              return compHand.replaceFirst(card + " ", "").trim() + "-" + card; 
-            } 
-            if (compHand.indexOf("8") != -1){ 
-            card = compHand.substring(compHand.indexOf("8"), compHand.indexOf("8") + 2);
-            return compHand.replaceFirst(card + " ", "").trim() + "-" + card; 
-           }else {
-          System.out.println("Computer skipped");
-          return compHand + "-" + topCard; 
-        }
-        return compHand.replace( topCard+ " ", "").trim();
+     private static String processComputer(String compHand, String topCard, String compOneHand, String compTwoHand) {
+      
+      String topNum = topCard.substring(0, topCard.length()-1); //gets the rank of the top card
+      String topSuit = topCard.substring(topCard.length()-1);  //gets the suit of the top card
+      String cardPlayed = "";
+      int count = 0;
+      int index = 0;
+      String card = "";
+      Boolean pickup = true;
+    
+      while(pickup && count <5){
+         Boolean canPlay = (compHand.indexOf(topCard.substring(topCard.length()-1)) >=0) || (compHand.indexOf(topCard.substring(0,1))>=0)|| (compHand.indexOf(topCard.substring(0,2))>=0) || (compHand.indexOf("8")>=0);
+         if(canPlay){
+            pickup = false;
+         }
+         else{
+            compHand += getCard() + " ";
+            count++;
+         }
       }
-    }
+      if(count == 5){
+         System.out.println("Turn was skipped");
+         return topCard + "|" + compHand;
+      }
+
+
+         if(compOneHand.length() <= 4 || compTwoHand.length() <= 4){ 
+            
+            while(compHand.indexOf(topNum, index) >= 0){
+               index = compHand.indexOf(topNum, index);
+               card = compHand.substring(index, compHand.indexOf(" ", index));
+               //will a card of the same rank if it doesnt have the same suit. 
+               if(!card.equals(topCard)){
+                  String cardReplace = card + " ";
+                  return card + "|" +  compHand.replace(cardReplace, "");
+               }
+               index ++;   
+            }
+            if(compHand.indexOf("8") >= 0){
+               compHand = compHand.substring(0, compHand.indexOf("8")) + compHand.substring(compHand.indexOf("8") + 3); //removes the 8 from the player hand
+          
+               if(compHand.indexOf("H") >= 0 && !"H".equals(topSuit)){
+                  return "8H" + "|" + compHand;
+               }if(compHand.indexOf("C") >= 0 && !"C".equals(topSuit)){
+                  return "8C" + "|" + compHand;
+               }if(compHand.indexOf("D") >= 0 && !"D".equals(topSuit)){
+                  return "8D" + "|" + compHand;
+               }if(compHand.indexOf("S") >= 0 && !"S".equals(topSuit)){
+                  return "8S" + "|" + compHand;
+               }
+              return "8" + topSuit + "|" + compHand; 
+            }
+      
+         if (compHand.indexOf(topSuit) >= 0){ 
+           if(!compHand.substring(compHand.indexOf(topSuit) -1, compHand.indexOf(topSuit)).equals("8")){
+              if(compHand.substring(compHand.indexOf(topSuit) - 1, compHand.indexOf(topSuit)).equals("0")){ //will be 10 because the only time 0 will be before the suit is 10
+                 cardPlayed = compHand.substring(compHand.indexOf("10"), compHand.indexOf("10") + 3);
+                 compHand = compHand.substring(0, compHand.indexOf("10")) + compHand.substring(compHand.indexOf("10") + 4);
+                 return cardPlayed + "|" + compHand;
+              }
+               cardPlayed = compHand.substring(compHand.indexOf(topSuit)-1, compHand.indexOf(topSuit)+1);
+               compHand = compHand.substring(0, compHand.indexOf(cardPlayed)) + compHand.substring(compHand.indexOf(cardPlayed) + 3);
+               return cardPlayed + "|" + compHand;
+          }
+        }
+    
+         if(compHand.indexOf(topNum)>= 0){
+            if(topNum.equals("10")){
+              cardPlayed = compHand.substring(compHand.indexOf("10"), compHand.indexOf("10")+3);
+              compHand = compHand.substring(0, compHand.indexOf("10")) + compHand.substring(compHand.indexOf("10") + 4);
+              return cardPlayed + "|" + compHand;
+           }
+
+            if (!compHand.substring(compHand.indexOf(topNum), compHand.indexOf(topNum) + 1).equals("8")){
+             cardPlayed = compHand.substring(compHand.indexOf(topNum), compHand.indexOf(topNum) + 2);
+             compHand = compHand.substring(0, compHand.indexOf(cardPlayed)) + compHand.substring(compHand.indexOf(cardPlayed) + 3);
+             return cardPlayed + "|" + compHand;
+           }
+
+        }
+
+        if(compHand.indexOf("8") >= 0){
+         compHand = compHand.substring(0, compHand.indexOf("8")) + compHand.substring(compHand.indexOf("8") + 3);
+         if(compHand.indexOf("H") >= 0 && !"H".equals(topSuit)){
+            return "8H" + "|" + compHand;
+         }if(compHand.indexOf("C") >= 0 && !"C".equals(topSuit)){
+            return "8C" + "|" + compHand;
+         }if(compHand.indexOf("D") >= 0 && !"D".equals(topSuit)){
+            return "8D" + "|" + compHand;
+         }if(compHand.indexOf("S") >= 0 && !"S".equals(topSuit)){
+            return "8S" + "|" + compHand;
+         }
+            return "8" + topSuit + "|" + compHand;
+      }
+      
+
+     return topCard + "|" + compHand; 
+
+   }
   }
-  }
-  }
-        
+
     
     //Determines if the player is able to put a card
     private static String validHand(String playerHand, String topCard) {
