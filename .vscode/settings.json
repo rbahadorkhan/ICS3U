@@ -1,8 +1,9 @@
 {
     "java.project.sourcePaths": [
+        "Unit 5 and 9 - Creating Classes and Inhertiance_/src/Week8",
         "Unit 3 and Four-Selection and Iteration/src/week7",
         "Unit 3 and Four-Selection and Iteration/src/Week6",
         "Unit 2 - Using Objects/src",
-        "Unit 5 and 9 - Creating Classes and Inhertiance_/src/Week8"
+        "Unit 6-Arrays and ArrayLists/src/Week10"
     ]
 }
