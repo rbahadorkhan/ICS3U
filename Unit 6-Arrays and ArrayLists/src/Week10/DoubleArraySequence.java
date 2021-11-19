@@ -88,6 +88,12 @@
     // The new double array sequence is a copy of the DoubleArraySequence src.
     public DoubleArraySequence(DoubleArraySequence src) {
         this.manyItems = src.manyItems; 
+        this.data = new double[src.data.length];
+
+        for (int i = 0; i < data.length; i++) {
+           data[1] = src.data;
+           
+        }
  
     }
  
@@ -218,7 +224,8 @@
      *                             int[minimumCapacity].
      **/
     public void ensureCapacity(int minimumCapacity) {
-      if(data.length> minimumCapacity)
+      if(data.length< minimumCapacity)
+         double[] temp= new double[minimumCapacity];
          throw new OutOfMemoryError("Insufficient Memory");
        
     }
