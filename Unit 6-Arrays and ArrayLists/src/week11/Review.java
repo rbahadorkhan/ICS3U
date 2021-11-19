@@ -16,7 +16,7 @@ public class Review {
      
         int letters = 0;
         for(int i=0; i< str.length; i++){
-           letters += str[i].length;
+           letters += str[i].length();
            System.out.println(letters);
         }
         String vowels = "aeiouAEIOU";
