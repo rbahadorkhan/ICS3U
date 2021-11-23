@@ -91,7 +91,7 @@
         this.data = new double[src.data.length];
 
         for (int i = 0; i < data.length; i++) {
-           data[1] = src.data;
+           data[i] = src.data[i];
            
         }
  
@@ -115,15 +115,23 @@
      *       the sequence to fail with an arithmetic overflow.
      **/
     public void addAfter(double d) {
-      for(int i = manyItems; i>currentIndex+1; i--){
-         data[i] = data[i-1];
+      if(manyItems + 1 > data.length){
+         ensureCapacity(data.length*2);
+      }if(isCurrent()){
+         for(int i = manyItems; i>currentIndex; i--){
+            data[i] = data[i-1];
+         }
+         data[currentIndex+1] = d; 
+         currentIndex++; 
+      }else{
+         data[manyItems] = d;
+         currentIndex = manyItems;
+
       }
-      data[currentIndex+1] = d; 
-      manyItems++;
-      currentIndex++; 
-      if(data.length<d)
-         throw new OutOfMemoryError("Insufficient Memory");
-    }
+      manyItems++; 
+   }
+
+
  
     /**
      * Add a new element to this sequence, before the current element. If the new
@@ -143,15 +151,35 @@
      *       the sequence to fail with an arithmetic overflow.
      **/
     public void addBefore(double element) {
-      for(int i = currentIndex; i<manyItems; i++){
-         data[i]=data[i+1];
+      if(manyItems == getCapacity())
+         if(getCapacity()==0)
+         ensureCapacity(5);
+      else
+         ensureCapacity(data.length+data.length);
+
+      if(isCurrent()){
+      for(int i = manyItems; i>currentIndex; i--){
+         data[i] = data[i-1];
       }
-      data[currentIndex-1] = element; 
-      manyItems--;
-      currentIndex--;
-      if(data.length<element)
-         throw new OutOfMemoryError("Insufficient Memory");
+      data[currentIndex] = element;
+      manyItems++;
+      }else{
+         if (size() == 0) {
+            data[0] = element;
+            manyItems = 1;
+            setCurrentIndex(0);
+         }else {
+            for (int i = manyItems; i > 0; i--) {
+               data[i] = data[i - 1];
+            }
+         data[0] = element;
+         manyItems++;
+         setCurrentIndex(0);
+      
+         }
+      }
     }
+    
  
     /**
      * Place the contents of another sequence at the end of this sequence.
@@ -169,8 +197,20 @@
      *       an arithmetic overflow that will cause the sequence to fail.
      **/
     public void addAll(DoubleArraySequence addend) {
+      if(addend == null){
+         throw new NullPointerException("This Sequence is null");
+      
+      }ensureCapacity(manyItems + addend.manyItems);
+      int j = 0;
+      for (int i = manyItems; i < data.length; i++) {
+         data[i] = addend.data[j];
+         j++;
+      }
+      manyItems += addend.manyItems;
+      }
+      
  
-    }
+    
  
     /**
      * Move forward, so that the current element is now the next element in this
@@ -209,9 +249,20 @@
      *       sequence to fail.
      **/
     public static DoubleArraySequence catenation(DoubleArraySequence s1, DoubleArraySequence s2) {
-       return null;
+      if(s1==null||s2==null){
+         throw new NullPointerException("One of the Arguments is Null");
+      }
+      DoubleArraySequence temp = new DoubleArraySequence(s1.manyItems + s2.manyItems);
+      temp.addAll(s1);
+      temp.addAll(s2);
+       
+      temp.currentIndex = temp.manyItems;
+      return temp;
  
-    }
+   }
+    
+   
+   
  
     /**
      * Change the current capacity of this sequence.
@@ -224,10 +275,13 @@
      *                             int[minimumCapacity].
      **/
     public void ensureCapacity(int minimumCapacity) {
-      if(data.length< minimumCapacity)
-         double[] temp= new double[minimumCapacity];
-         throw new OutOfMemoryError("Insufficient Memory");
-       
+      if( minimumCapacity> data.length){
+         double[]temp= new double[minimumCapacity];
+      for (int i = 0; i < data.length; i++) {
+         temp[i]= data[i];
+      }
+      data=temp;
+      }
     }
  
     /**
@@ -283,8 +337,19 @@
      *                                  so removeCurrent may not be called.
      **/
     public void removeCurrent() {
+      if(isCurrent()){
+         for (int i = currentIndex; i < manyItems; i++) {
+            data[i] = data[i + 1];
+         }
+         manyItems--;
+      }else{
+         throw new IllegalStateException("no current element");
+         }
+      }
+   
  
-    }
+ 
+    
  
     /**
      * Determine the number of elements in this sequence.
@@ -320,9 +385,15 @@
      *                             capacity.
      **/
     public void trimToSize() {
- 
+      double[] arr = new double[size()];
+
+      for (int i = 0; i < manyItems; i++) {
+         arr[i] = data[i];
+      }
+      data = arr;
     }
  
+    
     public int getCurrentIndex() {
        return currentIndex;
     }
